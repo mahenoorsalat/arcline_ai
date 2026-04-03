@@ -36,47 +36,47 @@ const AevaShowcase = () => {
         scrollTrigger: {
           trigger: parent,
           start: "top top",
-          end: "+=4500", // More space for the story
+          end: "+=2500", // Faster story sequence as requested
           pin: true,
           scrub: 1.5,
           anticipatePin: 1,
         },
       });
 
-      // Story Phase 1: Text Reveals one-by-one
+      // Story Phase 1: Text Reveals one-by-one (Tightened)
       tl.fromTo(title1Ref.current, 
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 2, ease: "power3.out" }
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" }
       )
       .fromTo(title2Ref.current, 
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 2, ease: "power3.out" },
-        "+=0.8" // Pause between titles
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" },
+        "+=0.4" 
       )
       .fromTo(descRef.current, 
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 2, ease: "power3.out" },
-        "+=0.8"
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" },
+        "+=0.4"
       )
 
-      // Story Phase 2: Phone Entry & Rotation
+      // Story Phase 2: Phone Entry (Faster entrance)
       .to(phone, { 
         x: -180, 
         opacity: 1,
         rotateY: -15,
         rotateX: 10,
-        duration: 3, 
+        duration: 2.5, 
         ease: "power4.inOut" 
-      }, "+=1") // Move phone only after text is solid
+      }, "+=0.6") 
       
-      // Story Phase 3: The Conversation (Bubbles one-by-one)
+      // Story Phase 3: The Conversation
       .to(bubbles.children, { 
         opacity: 1, 
         y: 0, 
-        stagger: 3, // Each bubble gets its own scroll space
-        duration: 3, 
+        stagger: 1.5, // Faster chat appearance
+        duration: 2, 
         ease: "expo.out" 
-      }, "+=0.5");
+      }, "+=0.3");
       
       setupCommonAnimations(tl);
 
@@ -89,42 +89,42 @@ const AevaShowcase = () => {
         scrollTrigger: {
           trigger: parent,
           start: "top top",
-          end: "+=3500", // Full space for mobile pinning story
-          scrub: 2, // Smooth damping
+          end: "+=1800", // Snappier mobile pinning
+          scrub: 2, 
           pin: true,
           anticipatePin: 1,
         },
       });
 
-      // Mobile Sequence - Staggered Story
+      // Mobile Sequence - Staggered Story (Optimized for Speed)
       tl.fromTo(title1Ref.current, 
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 2, ease: "power3.out" }
+        { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" }
       )
       .fromTo(title2Ref.current, 
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 2, ease: "power3.out" },
-        "+=0.8"
+        { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" },
+        "+=0.4"
       )
       .fromTo(descRef.current, 
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 2, ease: "power3.out" },
-        "+=0.8"
+        { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" },
+        "+=0.4"
       )
       .to(phone, { 
-        scale: 0.65, // More compact for mobile viewports
+        scale: 0.65, 
         y: -10,
         opacity: 1,
-        duration: 3,
+        duration: 2.5,
         ease: "power4.inOut"
-      }, "+=1")
+      }, "+=0.6")
       .to(bubbles.children, { 
         opacity: 1, 
         y: 0, 
-        stagger: 3, 
-        duration: 2.5, 
+        stagger: 1.8, 
+        duration: 2, 
         ease: "power3.out" 
-      }, "+=0.5");
+      }, "+=0.3");
 
       setupCommonAnimations(tl);
 
